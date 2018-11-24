@@ -14,7 +14,9 @@ class App extends Component {
     getMoney().then(data => {
       this.setState({
         money: data.money.value
-      }, this.updateBar)
+      }, () => {
+        setTimeout(this.updateBar, 1000)
+      })
     })
   }
 
