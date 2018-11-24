@@ -12,7 +12,9 @@ class App extends Component {
 
   componentDidMount() {
     getMoney().then(data => {
-      this.setState({money: data.money.value})
+      this.setState({
+        money: data.money.value
+      }, this.updateBar)
     })
   }
 
@@ -33,9 +35,6 @@ class App extends Component {
   }
 
   render() {
-
-    const percentage = ((this.state.money / this.state.tbow) * 100).toFixed(0);
-
     return (
       <div className="App">
         <div className="display">
@@ -49,7 +48,7 @@ class App extends Component {
             id="tbow"
             className="ldBar label-center"
             data-type="fill"
-            data-value={percentage}
+            data-value="0"
             data-stroke-trail="gray"
             data-stroke-trail-width="10"
             data-stroke-width="5"
